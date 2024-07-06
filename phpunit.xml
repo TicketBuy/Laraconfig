@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd" bootstrap="vendor/autoload.php" colors="true" executionOrder="random" failOnWarning="true" failOnRisky="true" failOnEmptyTestSuite="true" beStrictAboutOutputDuringTests="true" cacheDirectory=".phpunit.cache">
-  <testsuites>
-    <testsuite name="Test Suite">
-      <directory>tests</directory>
-      <exclude>tests/Dummies</exclude>
+<phpunit backupGlobals="false"
+         beStrictAboutTestsThatDoNotTestAnything="false"
+         colors="true"
+         processIsolation="false"
+         stopOnError="false"
+         stopOnFailure="false"
+         cacheDirectory=".phpunit.cache"
+         backupStaticProperties="false">
+<testsuites>
+    <testsuite name="Laravel Test Suite">
+        <directory>./tests</directory>
+        <exclude>tests/Dummies</exclude>
     </testsuite>
-  </testsuites>
-  <coverage>
-    <report>
-      <html outputDirectory="build/coverage"/>
-      <text outputFile="build/coverage.txt"/>
-      <clover outputFile="build/logs/clover.xml"/>
-    </report>
-  </coverage>
-  <logging>
-    <junit outputFile="build/report.junit.xml"/>
-  </logging>
-  <php>
+</testsuites>
+<php>
+    <ini name="date.timezone" value="UTC" />
+    <ini name="intl.default_locale" value="C.UTF-8" />
+    <ini name="memory_limit" value="2048M" />
     <env name="DB_CONNECTION" value="sqlite"/>
     <env name="DB_DATABASE" value=":memory:"/>
     <server name="BCRYPT_ROUNDS" value="4"/>
@@ -24,10 +24,5 @@
     <server name="MAIL_DRIVER" value="array"/>
     <server name="QUEUE_CONNECTION" value="sync"/>
     <server name="SESSION_DRIVER" value="array"/>
-  </php>
-  <source>
-    <include>
-      <directory suffix=".php">./src</directory>
-    </include>
-  </source>
+</php>
 </phpunit>
